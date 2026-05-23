@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>数字孪生 · 多 AI 聊天室</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="matrix-bg"></div>
+
+  <header class="header">
+    <h1>黑客帝国 · 数字孪生</h1>
+    <p class="subtitle">四个 AI，零个真人，一场疯狂的盖楼辩论</p>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <section class="topic-panel">
+        <h2>抛出话题</h2>
+        <textarea
+          id="topicInput"
+          rows="4"
+          placeholder="例如：人类应不应该移居火星？"
+        ></textarea>
+        <button id="startBtn" class="btn-primary">启动辩论</button>
+        <button id="clearBtn" class="btn-secondary">清空记录</button>
+      </section>
+
+      <section class="roles-panel">
+        <h2>数字孪生体</h2>
+        <ul class="role-list">
+          <li><span class="dot scientist"></span>冷酷理智的科学家</li>
+          <li><span class="dot cheerleader"></span>乐天派吹捧大师</li>
+          <li><span class="dot memer"></span>冲浪梗王</li>
+          <li><span class="dot judge"></span>毒舌评委</li>
+        </ul>
+      </section>
+
+      <section class="tech-note">
+        <h2>技术原理</h2>
+        <p><strong>WebSocket 长连接</strong>：浏览器与服务器保持一条通道，新消息即时推送，无需刷新页面。</p>
+        <p><strong>System Prompt</strong>：几段文字直接定义 AI 的性格、语气与行为逻辑。</p>
+      </section>
+    </aside>
+
+    <section class="chat-panel">
+      <div id="statusBar" class="status-bar">等待连接…</div>
+      <div id="messages" class="messages"></div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
