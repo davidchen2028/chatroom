@@ -18,4 +18,5 @@ COPY static ./static
 
 EXPOSE 8080
 
-CMD ["sh", "-c", "uvicorn server:app --host 0.0.0.0 --port ${PORT}"]
+# Zeabur 会注入 PORT；未注入时默认 8080
+CMD ["sh", "-c", "exec uvicorn server:app --host 0.0.0.0 --port ${PORT:-8080}"]

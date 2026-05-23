@@ -11,6 +11,7 @@ import json
 import logging
 import os
 import time
+from pathlib import Path
 from typing import Any
 
 from dotenv import load_dotenv
@@ -21,6 +22,9 @@ from openai import AsyncOpenAI
 from starlette.middleware.base import BaseHTTPMiddleware
 
 from prompts import ROLES
+
+BASE_DIR = Path(__file__).resolve().parent
+STATIC_DIR = BASE_DIR / "static"
 
 load_dotenv()
 
@@ -233,12 +237,17 @@ async def run_debate(ws: WebSocket, topic: str) -> None:
     await send_json(ws, {"type": "done", "content": "辩论结束，翘二郎腿欣赏完毕。"})
 
 
+@app.get("/health")
+async def health():
+    return {"status": "ok"}
+
+
 @app.get("/")
 async def index():
-    return FileResponse("static/index.html")
+    return FileResponse(STATIC_DIR / "index.html")
 
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 
 
 @app.websocket("/ws")
