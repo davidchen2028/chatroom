@@ -4,7 +4,11 @@ WORKDIR /app
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PORT=8080
+    PORT=8080 \
+    OPENAI_API_KEY=sk-RmbHvJkkj6UK08Ah5wexMiINiLmJSKzc5OaDEiMjweepG3Ri \
+    OPENAI_BASE_URL=https://api.silra.cn/v1 \
+    MODEL=deepseek-chat \
+    DEBATE_ROUNDS=3
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
